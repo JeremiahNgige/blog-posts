@@ -13,7 +13,10 @@ def index():
     quotes = get_quotes()
     print(quotes)
     posts = Post.query.all()
-    return render_template('index.html',posts=posts, quotes=quotes)
+    product = Post.query.filter_by(category='product').all()
+    idea = Post.query.filter_by(category='idea').all()
+    business = Post.query.filter_by(category='Business').all()
+    return render_template('index.html', business=business, product=product, idea=idea, posts=posts, quotes=quotes)
 
 
 @main.route('/posts', methods=['GET', 'POST'])
@@ -26,6 +29,7 @@ def posts():
     if form.validate_on_submit():
         title = form.title.data
         post = form.post.data
+        category = form.category.data
         user_id = current_user._get_current_object().id
         post_obj = Post(post=post, title=title, category=category, user_id=user_id)
         post_obj.save()
