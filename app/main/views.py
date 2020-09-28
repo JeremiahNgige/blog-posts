@@ -13,35 +13,28 @@ def index():
     quotes = get_quotes()
     print(quotes)
     posts = Post.query.all()
-    product = Post.query.filter_by(category='product').all()
-    idea = Post.query.filter_by(category='idea').all()
-    business = Post.query.filter_by(category='Business').all()
-    return render_template('index.html', business=business, product=product, idea=idea, posts=posts, quotes=quotes)
+    return render_template('index.html',posts=posts, quotes=quotes)
 
 
-@main.route('/posts')
+@main.route('/posts', methods=['GET', 'POST'])
 @login_required
 def posts():
     posts = Post.query.all()
     likes = Upvote.query.all()
     user = current_user
-    return render_template('posts_display.html', posts=posts, likes=likes, user=user)
-
-
-@main.route('/new_post', methods=['GET', 'POST'])
-@login_required
-def new_post():
     form = PostForm()
     if form.validate_on_submit():
         title = form.title.data
         post = form.post.data
-        category = form.category.data
         user_id = current_user._get_current_object().id
         post_obj = Post(post=post, title=title, category=category, user_id=user_id)
         post_obj.save()
         return redirect(url_for('main.posts'))
     
-    return render_template('post.html', form=form)
+    return render_template('posts_display.html', posts=posts, likes=likes, user=user,form=form)
+
+
+
 
 
 @main.route('/comment/<int:post_id>', methods=['GET', 'POST'])
