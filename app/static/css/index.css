@@ -14,8 +14,8 @@
 .text-bold{
     font-weight: 300px;
 }
-.bolder{
-    font-weight: bolder;
+.rnd{
+    border-radius: 20px;
 }
 .cover {
     width: 260px;
@@ -24,6 +24,7 @@
 .bg-centre{
     width: 100%;
     height: auto;
+    background: lightcyan;
 }
 .bg-img1{
     background: url('https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg')center center no-repeat;

@@ -25,7 +25,7 @@ def posts():
     posts = Post.query.all()
     likes = Upvote.query.all()
     user = current_user
-    return render_template('pitch_disp.html', posts=posts, likes=likes, user=user)
+    return render_template('posts_display.html', posts=posts, likes=likes, user=user)
 
 
 @main.route('/new_post', methods=['GET', 'POST'])
@@ -41,7 +41,7 @@ def new_post():
         post_obj.save()
         return redirect(url_for('main.posts'))
     
-    return render_template('pitch.html', form=form)
+    return render_template('post.html', form=form)
 
 
 @main.route('/comment/<int:post_id>', methods=['GET', 'POST'])
