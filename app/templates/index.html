@@ -16,11 +16,28 @@
     <div class="outer mt-3">
       <div class="container mt-3">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-2 ">
             <a href="{{ url_for('auth.login') }}" class="btn btn-lg btn-rounded btn-blue"> LOGIN</a>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-1">
+            <div class="outer">
+              <div class="container">
+                <h4 class="cyan-text text-center">
+                  or
+                </h4>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 ">
             <a href="{{ url_for('auth.register') }}" class="btn btn-lg btn-rounded btn-blue"> REGISTER </a>
+          </div>
+          <div class="col-md-3">
+            <div class="outer">
+              <div class="container">
+                <h4 class="cyan-text text-center">If not a user</h4>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
