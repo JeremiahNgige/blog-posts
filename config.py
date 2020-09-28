@@ -10,7 +10,7 @@ class Config:
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     
-    QOUTES_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/quotes.json'
+    QUOTES_API_BASE_URL = 'http://quotes.stormconsultancy.co.uk/quotes.json'
     
     SECRET_KEY = os.environ.get('SECRET_KEY')
     SQLALCHEMY_DATABASE_URI = 'postgresql+psycopg2://oem:Jeremih23@localhost/pblog'

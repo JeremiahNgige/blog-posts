@@ -13,13 +13,11 @@ class  Quotes:
     Qoutes class to define quotes Objects
     '''
     
-    def __init__(self,id,title,overview,poster,vote_average,vote_count):
+    def __init__(self,author,id,quote,permalink):
+        self.author = author
         self.id = id
-        self.title =title
-        self.overview = overview
-        self.poster = 'https://image.tmdb.org/t/p/w500/'+ poster
-        self.vote_average =vote_average
-        self.vote_count = vote_count
+        self.quote = quote
+        self.permalink = permalink
     
 class User(UserMixin, db.Model):
     __tablename__ = 'users'

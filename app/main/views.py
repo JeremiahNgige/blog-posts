@@ -5,15 +5,18 @@ from .. import photos,db
 from . import main
 from .forms import PostForm, CommentForm, UpdateProfile
 from ..models import Post, Comment, User, Upvote, Downvote
+from ..requests import get_quotes
 
 
 @main.route('/')
 def index():
+    quotes = get_quotes()
+    print(quotes)
     posts = Post.query.all()
     product = Post.query.filter_by(category='product').all()
     idea = Post.query.filter_by(category='idea').all()
     business = Post.query.filter_by(category='Business').all()
-    return render_template('index.html', business=business, product=product, idea=idea, posts=posts)
+    return render_template('index.html', business=business, product=product, idea=idea, posts=posts, quotes=quotes)
 
 
 @main.route('/posts')
